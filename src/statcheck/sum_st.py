@@ -24,7 +24,7 @@ def summary_statcheck(Res):
 
     # Number of decision errors per article and in total
     decision_errors = Res.groupby('Source').sum()
-    decision_errors = list(decision_errors['DecisionError'].values)
+    decision_errors = list(decision_errors['Decision_Error'].values)
     decision_errors.append(sum(decision_errors))
 
     # Results in dataframe
@@ -33,11 +33,11 @@ def summary_statcheck(Res):
             "Source": source,
             "pValues": p_values,
             "Errors": errors,
-            "DecisionErrors": decision_errors
+            "Decision_Errors": decision_errors
         }
     )
 
     # Rename columns based on constants in constants.R file
-    res.columns = ['Source', 'pValues', 'Errors', 'DecisionErrors']
+    res.columns = ['Source', 'pValues', 'Errors', 'Decision_Errors']
 
     return res

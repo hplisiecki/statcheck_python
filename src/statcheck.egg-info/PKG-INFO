@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: statcheck
-Version: 0.0.16
+Version: 0.0.1
 Summary: Python implementation of the R package 'statcheck' used for extracting and analysing statistical tests in scientific articles.
 Author-email: Hubert Plisiecki <hplisiecki@gmail.com>
 Project-URL: Homepage, https://github.com/hplisiecki/statcheck_python

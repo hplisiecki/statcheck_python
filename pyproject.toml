@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "statcheck"
-version = "0.0.16"
+version = "0.0.1"
 dependencies = [
     "pandas ~= 1.4.3",
     "numpy ~= 1.23.2",

@@ -42,7 +42,8 @@ def statcheck(texts, stat=["t", "F", "r", "Chi2", "Z", "Q"],
         names_dict = {texts[i]: i for i in range(len(texts))}
     else:
         names_dict = {texts[i]: names[i] for i in range(len(texts))}
-    print("Extracting statistics from text")
+    if messages:
+        print("Extracting statistics from text")
     for txt in tqdm(names_dict.keys()):
 
 
@@ -89,6 +90,8 @@ def statcheck(texts, stat=["t", "F", "r", "Chi2", "Z", "Q"],
         print("=+=+=+=+=+=+=+=+=+=+=+=+=+=")
         print(" Done extracting statistics")
         print("=+=+=+=+=+=+=+=+=+=+=+=+=+=")
+        print()
+        print("Processing statistics")
 
 
 
