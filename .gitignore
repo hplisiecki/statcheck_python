@@ -5,4 +5,4 @@
 # ignore directory .pytest_cache
 /pytest_cache
 /dist
-dist/pyproject.toml
+pyproject.toml
