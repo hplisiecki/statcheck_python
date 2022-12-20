@@ -5,8 +5,7 @@
 # statcheck
 
 <!-- badges: start -->
-
-
+[![PyPI version](https://badge.fury.io/py/statcheck.svg)](https://badge.fury.io/py/statcheck)
 <!-- badges: end -->
 
 ## Credits
