@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "statcheck"
+version = "0.0.10"
+dependencies = [
+    "pandas ~= 1.4.3",
+    "numpy ~= 1.23.2",
+    "tqdm ~= 4.64.0",
+    "pytest ~= 7.2.0",
+    "scipy ~= 1.9.3",
+    "beautifulsoup4 ~= 4.11.1",
+    "PyPDF2 ~= 2.11.2",
+]
+authors = [
+  { name="Example Author", email="author@example.com" },
+]
+description = "Python implementation of the R package 'statcheck' used for extracting and analysing statistical tests in scientific articles."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/hplisiecki/statcheck_python"

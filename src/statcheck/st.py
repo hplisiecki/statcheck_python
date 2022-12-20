@@ -1,8 +1,8 @@
-from helpers_parse_stats import extract_p_value
-from extract_stats import extract_stats
-from extract_1tail import extract_1tail
-from calc_APA_factor import calc_APA_factor
-from process_stats import process_stats
+from st.helpers_parse_stats import extract_p_value
+from st.extract_stats import extract_stats
+from st.extract_1tail import extract_1tail
+from st.calc_APA_factor import calc_APA_factor
+from st.process_stats import process_stats
 
 import pandas as pd
 pd.options.mode.chained_assignment = None
@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 def statcheck(texts, stat=["t", "F", "r", "Chi2", "Z", "Q"],
               OneTailedTests=False, alpha=.05, pEqualAlphaSig=True,
-              pZeroError=True, OneTailedTxt=False, AllPValues=False,
+              pZeroError=True, OneTailedTxt=False,
               messages=True, names = None):
 
     # check if texts is a list
@@ -150,9 +150,6 @@ def statcheck(texts, stat=["t", "F", "r", "Chi2", "Z", "Q"],
 
         # Return ------------------------------------------------------------------
 
-        if AllPValues == False:
-            if not len(Res) > 0:
-                print("No statistics found")
 
     else:
         if len(pRes) > 0:

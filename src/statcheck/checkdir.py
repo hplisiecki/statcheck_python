@@ -1,11 +1,11 @@
-from file_to_txt import getPDF, getHTML
-from statcheck import statcheck
-
+from st.file_to_txt import getPDF, getHTML
+from st.statcheck import statcheck
+import re
 
 import os
 from tkinter import filedialog, ttk
 
-def checkdir(dir = None, subdir = True, *args):
+def checkdir(dir = None, subdir = True, *kwargs):
     if dir is None:
         root = ttk()
         root.withdraw()
@@ -15,34 +15,36 @@ def checkdir(dir = None, subdir = True, *args):
     htmls = any(re.search(r"\.html?$", file, re.IGNORECASE) for file in os.listdir(dir))
 
     if pdfs:
-        pdfres = checkPDFdir(dir, subdir, *args)
+        pdfres, pdfPres = checkPDFdir(dir, subdir, *kwargs)
     if htmls:
-        htmlres = checkHTMLdir(dir, subdir, *args)
+        htmlres, pdfPres = checkHTMLdir(dir, subdir, *kwargs)
 
     if pdfs and htmls:
         if pdfres is not None and htmlres is not None:
             res = pd.concat([pdfres, htmlres])
+            pres = pd.concat([pdfPres, htmlPres])
         else:
             raise ValueError("statcheck did not find any results")
     elif pdfs and not htmls:
         if pdfres is not None:
           res = pdfres
+          pres = pdfPres
         else:
           raise ValueError("statcheck did not find any results")
     elif not pdfs and htmls:
         if htmlres is not None:
             res = htmlres
+            pres = htmlPres
         else:
             raise ValueError("statcheck did not find any results")
     elif not pdfs and not htmls:
         raise ValueError("No PDF or HTML found")
 
-    res.__class__ = "statcheck", "data.frame"
-    return res
+    return res, pres
 
 
 ############# HTML CHECKING FUNCTIONS #############
-def checkHTML(files=None, *args, **kwargs):
+def checkHTML(files=None,**kwargs):
     if files is None:
         root = ttk()
         root.withdraw()
@@ -51,9 +53,9 @@ def checkHTML(files=None, *args, **kwargs):
     texts = getHTML(files)
 
     names = [os.path.splitext(os.path.basename(file))[0] for file in files]
-    return statcheck(texts, names = names)
+    return statcheck(texts, names = names, *kwargs)
 
-def checkHTMLdir(dir=None, subdir=True, extension=True, *args, **kwargs):
+def checkHTMLdir(dir=None, subdir=True, extension=True, **kwargs):
     if dir is None:
         root = ttk()
         root.withdraw()
@@ -80,7 +82,7 @@ def checkHTMLdir(dir=None, subdir=True, extension=True, *args, **kwargs):
     texts = getHTML(files)
 
     names = [os.path.splitext(os.path.basename(file))[0] for file in files]
-    return statcheck(texts, names = names)
+    return statcheck(texts, names = names, *kwargs)
 
 
 

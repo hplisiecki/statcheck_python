@@ -1,4 +1,4 @@
-from compute_p import compute_p
+from st.compute_p import compute_p
 
 
 
@@ -12,8 +12,6 @@ def error_test(reported_p, test_type, test_stat,
         reported_p = float(reported_p)
     except:
         pass
-    print(reported_p)
-    print(p_comparison)
 
     # replace 'ns' for > alpha -----------------------------------------------
     if p_comparison == 'ns':

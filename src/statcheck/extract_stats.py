@@ -1,8 +1,8 @@
-from helpers_parse_stats import extract_pattern
-from regex import *
-from helpers_parse_stats import extract_df
-from helpers_parse_stats import extract_test_stats
-from helpers_parse_stats import extract_p_value
+from st.helpers_parse_stats import extract_pattern
+from st.regex import *
+from st.helpers_parse_stats import extract_df
+from st.helpers_parse_stats import extract_test_stats
+from st.helpers_parse_stats import extract_p_value
 
 import pandas as pd
 pd.options.mode.chained_assignment = None

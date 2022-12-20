@@ -1,4 +1,4 @@
-from regex import *
+from st.regex import *
 import pandas as pd
 pd.options.mode.chained_assignment = None
 import re

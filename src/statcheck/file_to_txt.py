@@ -1,7 +1,9 @@
-# HTML TO TXT ------------------------------------------------------------------
 from bs4 import BeautifulSoup
-import re
 from tqdm import tqdm
+import PyPDF2
+import re
+
+# HTML TO TXT ------------------------------------------------------------------
 
 
 def getHTML(files):
@@ -67,8 +69,6 @@ def getHTML(files):
     return strings
 
 # PDF TO TXT -------------------------------------------------------------------
-import PyPDF2
-import re
 
 def getPDF(files):
 
@@ -84,12 +84,12 @@ def getPDF(files):
             for page in range(pdfReader.numPages):
                 text += pdfReader.getPage(page).extractText()
 
-            # # this code gets rid of XML artifacts
-            # raw_text = text.encode('unicode_escape').decode('utf-8')
-            # regex = r'\\x[0-9]{2}'
-            # modified_text = re.sub(regex, '', raw_text)
-            # modified_text = modified_text.encode('utf-8').decode('unicode_escape')
-            strings.append(text)
+            # this code gets rid of XML artifacts
+            raw_text = text.encode('unicode_escape').decode('utf-8')
+            regex = r'\\x[0-9]{2}'
+            modified_text = re.sub(regex, ' ', raw_text)
+            modified_text = modified_text.encode('utf-8').decode('unicode_escape')
+            strings.append(modified_text)
         except:
             failed.append(file)
             continue
