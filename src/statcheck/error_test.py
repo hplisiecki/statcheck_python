@@ -1,4 +1,4 @@
-from st.compute_p import compute_p
+from statcheck.compute_p import compute_p
 
 
 
@@ -8,6 +8,22 @@ def error_test(reported_p, test_type, test_stat,
                p_dec, test_dec,
                two_tailed,
                alpha, pZeroError):
+    """
+    Check if a result is an error
+    :param reported_p: Reported p-value
+    :param test_type: Type of test (e.g. t-test, F-test, chi-square test)
+    :param test_stat: Test statistic
+    :param df1: Degrees of freedom 1
+    :param df2: Degrees of freedom 2
+    :param p_comparison: Comparison of reported p-value to computed p-value
+    :param test_comparison: Comparison of reported test statistic to computed test statistic
+    :param p_dec: Number of decimal places to round p-values to
+    :param test_dec: Number of decimal places to round test statistics to
+    :param two_tailed: Whether the test is two-tailed
+    :param alpha: Significance level
+    :param pZeroError: Whether to treat p-values of 0 as errors
+    :return:
+    """
     try:
         reported_p = float(reported_p)
     except:

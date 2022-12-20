@@ -1,17 +1,21 @@
-from st.helpers_parse_stats import extract_pattern
-from st.regex import *
-from st.helpers_parse_stats import extract_df
-from st.helpers_parse_stats import extract_test_stats
-from st.helpers_parse_stats import extract_p_value
+from statcheck.helpers_parse_stats import extract_pattern
+from statcheck.regex import *
+from statcheck.helpers_parse_stats import extract_df
+from statcheck.helpers_parse_stats import extract_test_stats
+from statcheck.helpers_parse_stats import extract_p_value
 
 import pandas as pd
 pd.options.mode.chained_assignment = None
-
 import re
 
-
-
 def extract_stats(txt, stat, name):
+    """
+    Extracts the test statistic, degrees of freedom, and p-value from a string.
+    :param txt: String with the text to be parsed
+    :param stat: Types of statistical test
+    :param name: Names of source files
+    :return:
+    """
     # step 1: extract the raw nhst results ------------------------------------------
     # extract the raw results from the text
     nhst_raw, starts_list, ends_list = extract_pattern(txt, # nhst is the regex for nhst results

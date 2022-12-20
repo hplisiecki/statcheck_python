@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "statcheck"
-version = "0.0.10"
+version = "0.0.16"
 dependencies = [
     "pandas ~= 1.4.3",
     "numpy ~= 1.23.2",
@@ -13,9 +13,10 @@ dependencies = [
     "scipy ~= 1.9.3",
     "beautifulsoup4 ~= 4.11.1",
     "PyPDF2 ~= 2.11.2",
+    "matplotlib ~= 3.6.2",
 ]
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Hubert Plisiecki", email="hplisiecki@gmail.com" },
 ]
 description = "Python implementation of the R package 'statcheck' used for extracting and analysing statistical tests in scientific articles."
 readme = "README.md"

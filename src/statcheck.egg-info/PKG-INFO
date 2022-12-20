@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: statcheck
-Version: 0.0.10
+Version: 0.0.16
 Summary: Python implementation of the R package 'statcheck' used for extracting and analysing statistical tests in scientific articles.
-Author-email: Example Author <author@example.com>
+Author-email: Hubert Plisiecki <hplisiecki@gmail.com>
 Project-URL: Homepage, https://github.com/hplisiecki/statcheck_python
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License

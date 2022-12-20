@@ -5,3 +5,4 @@ pytest~=7.2.0
 scipy~=1.9.3
 beautifulsoup4~=4.11.1
 PyPDF2~=2.11.2
+matplotlib~=3.6.2

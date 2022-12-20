@@ -1,0 +1,7 @@
+
+
+# test materials
+# can't share because of copyright restrictions
+# ignore directory .pytest_cache
+/pytest_cache
+/dist

@@ -3,7 +3,7 @@ import os
 import pandas as pd
 src_dir = os.path.abspath(os.path.join(__file__, "../../src/statcheck"))
 sys.path.insert(0, src_dir)
-from statcheck import statcheck
+from st import statcheck
 
 # test if the following z-tests are correctly retrieved ----------------------
 

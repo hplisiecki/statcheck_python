@@ -7,6 +7,11 @@ import re
 
 
 def getHTML(files):
+    """
+    Extracts the text from a list of HTML files.
+    :param files: List of HTML files
+    :return: List of text strings
+    """
     if type(files) != list:
         files = [files]
     strings = []
@@ -71,6 +76,11 @@ def getHTML(files):
 # PDF TO TXT -------------------------------------------------------------------
 
 def getPDF(files):
+    """
+    Extracts the text from a list of PDF files.
+    :param files: List of PDF files
+    :return: List of text strings
+    """
 
     if type(files) != list:
         files = [files]

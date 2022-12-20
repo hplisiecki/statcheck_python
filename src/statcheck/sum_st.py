@@ -2,6 +2,11 @@ import pandas as pd
 # suppress pandas warnings
 pd.options.mode.chained_assignment = None
 def summary_statcheck(Res):
+    """
+    Summarizes the results of statcheck
+    :param Res: output of statcheck
+    :return: summary of results
+    """
 
     # Source
     source = list(Res['Source'].unique())

@@ -2,7 +2,7 @@ import sys
 import os
 src_dir = os.path.abspath(os.path.join(__file__, "../../src/statcheck"))
 sys.path.insert(0, src_dir)
-from statcheck import statcheck
+from st import statcheck
 import pandas as pd
 
 

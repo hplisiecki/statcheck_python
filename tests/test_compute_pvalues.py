@@ -5,7 +5,7 @@ sys.path.insert(0, src_dir)
 import scipy.stats as stats
 import numpy as np
 from compute_p import r2t
-from statcheck import statcheck
+from st import statcheck
 
 # python tests for the p-value correction
 
@@ -32,32 +32,32 @@ computed6 = stats.chi2.sf(22.20, 28)
 # test 1
 def test_pvalue1():
     Res, pRes = statcheck(txt1)
-    assert Res['Computed'].iloc[0] == computed1, "Test 1 failed"
+    assert Res['Computed_P_Value'].iloc[0] == computed1, "Test 1 failed"
 
 # test 2
 def test_pvalue2():
     Res, pRes = statcheck(txt2)
-    assert Res['Computed'].iloc[0] == computed2, "Test 2 failed"
+    assert Res['Computed_P_Value'].iloc[0] == computed2, "Test 2 failed"
 
 # test 3
 def test_pvalue3():
     Res, pRes = statcheck(txt3)
-    assert Res['Computed'].iloc[0] == computed3, "Test 3 failed"
+    assert Res['Computed_P_Value'].iloc[0] == computed3, "Test 3 failed"
 
 # test 4
 def test_pvalue4():
     Res, pRes = statcheck(txt4)
-    assert Res['Computed'].iloc[0] == computed4, "Test 4 failed"
+    assert Res['Computed_P_Value'].iloc[0] == computed4, "Test 4 failed"
 
 # test 5
 def test_pvalue5():
     Res, pRes = statcheck(txt5)
-    assert Res['Computed'].iloc[0] == computed5, "Test 5 failed"
+    assert Res['Computed_P_Value'].iloc[0] == computed5, "Test 5 failed"
 
 # test 6
 def test_pvalue6():
     Res, pRes = statcheck(txt6)
-    assert Res['Computed'].iloc[0] == computed6, "Test 6 failed"
+    assert Res['Computed_P_Value'].iloc[0] == computed6, "Test 6 failed"
 
 
 

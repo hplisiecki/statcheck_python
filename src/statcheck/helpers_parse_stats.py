@@ -1,4 +1,4 @@
-from st.regex import *
+from statcheck.regex import *
 import pandas as pd
 pd.options.mode.chained_assignment = None
 import re
@@ -9,14 +9,24 @@ import numpy as np
 
 # function to extract snippets of text from a string ---------------------------
 
-def extract_pattern(txt, pattern, ignore_case=True, return_limits = False):
+def extract_pattern(txt, pattern, ignore_case = True, return_limits = False):
+    """
+    Extracts a pattern from a string and returns the match(es) as a list.
+    :param txt: string to extract pattern from
+    :param pattern: regex pattern to extract
+    :param ignore_case: whether to ignore case
+    :param return_limits: whether to return the limits of the match(es)
+    :return: list of matches
+    """
     # extract the locations of the matches in the text:
     # gregexpr returns the position of every match in a string
     # if there are multiple matches in the text, gregexpr will flag them all
     # the output is in list format, but the relevant information is all in [[1]]
     txt = txt.replace('\n', ' ')
-
-    string_loc = re.finditer(pattern, txt, re.IGNORECASE)
+    if ignore_case:
+        string_loc = re.finditer(pattern, txt, re.IGNORECASE)
+    else:
+        string_loc = re.finditer(pattern, txt)
 
     # if no match is found, return NULL
     if string_loc is None:
@@ -51,6 +61,12 @@ def extract_pattern(txt, pattern, ignore_case=True, return_limits = False):
 # function to extract dfs from a raw nhst result -------------------------------
 
 def extract_df(raw, test_type):
+    """
+    Extracts the degrees of freedom from a raw nhst result.
+    :param raw: raw nhst result
+    :param test_type: type of test
+    :return: degrees of freedom
+    """
     # z tests do not have dfs, so return df1 = NA, and df2 = NA for z-tests
     if test_type == "Z":
         df1 = None
@@ -106,6 +122,11 @@ def extract_df(raw, test_type):
 
 
 def remove_1000_sep(raw):
+    """
+    Removes thousand separators from a string.
+    :param raw: string to remove thousand separators from
+    :return: string without thousand separators
+    """
     # replace all matches in the raw nhst results with nothing
     output = re.sub(pattern=RGX_1000_SEP,
                     repl="",
@@ -123,6 +144,11 @@ def remove_1000_sep(raw):
 
 
 def recover_minus_sign(raw):
+    """
+    Replaces weird symbols with a minus sign.
+    :param raw: string to replace weird symbols in
+    :return: string with weird symbols replaced by a minus sign
+    """
     output = re.sub(pattern=RGX_WEIRD_MINUS,
              repl=" -",
              string=raw,
@@ -133,6 +159,11 @@ def recover_minus_sign(raw):
 # function to extract test-values and test comparisons -------------------------
 
 def extract_test_stats(raw):
+    """
+    Extracts test statistics from a raw nhst result.
+    :param raw: raw nhst result
+    :return: test statistics
+    """
     # remove N = ... from chi-square tests
     # otherwise, these sample sizes will wrongly be classified as test statistics
     raw_noN = re.sub(RGX_DF_CHI2, "", raw)
@@ -190,6 +221,11 @@ def extract_test_stats(raw):
 # function to extract and parse p-values --------------------------------------
 
 def extract_p_value(raw):
+    """
+    Extracts p-values from a raw nhst result.
+    :param raw: raw nhst result
+    :return: p-value
+    """
     p_raw = extract_pattern(txt=raw,
                             pattern=RGX_P_NS)
 

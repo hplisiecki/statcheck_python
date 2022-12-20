@@ -1,4 +1,10 @@
 def calc_APA_factor(Res, pRes):
+  """
+    Calculate the APA factor, i.e. the proportion of p-values that were reported according to the APA style.
+  :param Res: The Dataframe with the results of the statistical analyses.
+  :param pRes: The Dataframe with the p-values
+  :return:
+  """
   # select only the results of pRes that are from articles with at least 1 statcheck result
   pRes_selection = pRes[pRes['Source'].isin(Res['Source'])]
 

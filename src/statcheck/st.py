@@ -1,8 +1,8 @@
-from st.helpers_parse_stats import extract_p_value
-from st.extract_stats import extract_stats
-from st.extract_1tail import extract_1tail
-from st.calc_APA_factor import calc_APA_factor
-from st.process_stats import process_stats
+from statcheck.helpers_parse_stats import extract_p_value
+from statcheck.extract_stats import extract_stats
+from statcheck.extract_1tail import extract_1tail
+from statcheck.calc_APA_factor import calc_APA_factor
+from statcheck.process_stats import process_stats
 
 import pandas as pd
 pd.options.mode.chained_assignment = None
@@ -13,6 +13,19 @@ def statcheck(texts, stat=["t", "F", "r", "Chi2", "Z", "Q"],
               OneTailedTests=False, alpha=.05, pEqualAlphaSig=True,
               pZeroError=True, OneTailedTxt=False,
               messages=True, names = None):
+    """
+    This function analyses the statistical results in a text.
+    :param texts: A list of strings with the text to be parsed (can be a single string)
+    :param stat: A list of types of statistical test to be extracted
+    :param OneTailedTests: Whether to assume one-tailed tests
+    :param alpha: The significance level
+    :param pEqualAlphaSig: Whether to consider p-values equal to the significance level as significant
+    :param pZeroError: Whether to consider p-values equal to zero as significant
+    :param OneTailedTxt: Whether to assume one-tailed tests based on the text
+    :param messages: Whether to print messages
+    :param names: A list of names for the texts
+    :return: Two data frames with the results
+    """
 
     # check if texts is a list
     if type(texts) != list:
@@ -145,7 +158,7 @@ def statcheck(texts, stat=["t", "F", "r", "Chi2", "Z", "Q"],
 
         Res.columns = ["Source", "Statistic", "df1", "df2", "Test_Comparison",
                        "Value", "Reported_P_Comparison", "Reported_P_Value",
-                       "Computed", "Raw", "Error", "DecisionError",
+                       "Computed_P_Value", "Raw", "Error", "Decision_Error",
                        "OneTailedInTxt", "APAfactor"]
 
         # Return ------------------------------------------------------------------

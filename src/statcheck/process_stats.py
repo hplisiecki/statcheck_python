@@ -1,6 +1,6 @@
-from st.compute_p import compute_p
-from st.error_test import error_test
-from st.decision_error_test import decision_error_test
+from statcheck.compute_p import compute_p
+from statcheck.error_test import error_test
+from statcheck.decision_error_test import decision_error_test
 
 import pandas as pd
 pd.options.mode.chained_assignment = None

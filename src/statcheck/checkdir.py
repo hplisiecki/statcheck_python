@@ -1,16 +1,17 @@
-from st.file_to_txt import getPDF, getHTML
-from st.statcheck import statcheck
+from statcheck.file_to_txt import getPDF, getHTML
+from statcheck.st import statcheck
+
 import re
-
 import os
-from tkinter import filedialog, ttk
 
-def checkdir(dir = None, subdir = True, *kwargs):
-    if dir is None:
-        root = ttk()
-        root.withdraw()
-        files = filedialog.askopenfilenames()
-
+def checkdir(dir, subdir = True, *kwargs):
+    """
+    Check all files in a directory for statistical errors.
+    :param dir: Directory to check
+    :param subdir: Check subdirectories
+    :param kwargs: Keyword arguments for statcheck
+    :return: Results of statcheck
+    """
     pdfs = any(re.search(r"\.pdf$", file, re.IGNORECASE) for file in os.listdir(dir))
     htmls = any(re.search(r"\.html?$", file, re.IGNORECASE) for file in os.listdir(dir))
 
@@ -44,22 +45,27 @@ def checkdir(dir = None, subdir = True, *kwargs):
 
 
 ############# HTML CHECKING FUNCTIONS #############
-def checkHTML(files=None,**kwargs):
-    if files is None:
-        root = ttk()
-        root.withdraw()
-        files = filedialog.askopenfilenames()
-
+def checkHTML(files, **kwargs):
+    """
+    Check a list of HTML files for statistical errors.
+    :param files: List of HTML files
+    :param kwargs: Keyword arguments for statcheck
+    :return: Results of statcheck
+    """
     texts = getHTML(files)
 
     names = [os.path.splitext(os.path.basename(file))[0] for file in files]
     return statcheck(texts, names = names, *kwargs)
 
-def checkHTMLdir(dir=None, subdir=True, extension=True, **kwargs):
-    if dir is None:
-        root = ttk()
-        root.withdraw()
-        files = filedialog.askopenfilenames()
+def checkHTMLdir(dir, subdir=True, extension=True, **kwargs):
+    """
+    Check all HTML files in a directory for statistical errors.
+    :param dir: Directory to check
+    :param subdir: Check subdirectories
+    :param extension: Check file extension
+    :param kwargs: Keyword arguments for statcheck
+    :return: Results of statcheck
+    """
     if extension:
         pat = ".html|.htm"
     else:
@@ -87,23 +93,27 @@ def checkHTMLdir(dir=None, subdir=True, extension=True, **kwargs):
 
 
 ############# PDF CHECKING FUNCTIONS #############
-def checkPDF(files=None, *args, **kwargs):
-    if files is None:
-        root = Tk()
-        root.withdraw()
-        files = filedialog.askopenfilenames()
-
+def checkPDF(files=None, **kwargs):
+    """
+    Check a list of PDF files for statistical errors.
+    :param files: List of PDF files
+    :param kwargs: Keyword arguments for statcheck
+    :return: Results of statcheck
+    """
+    texts = getPDF(files)
 
     names = [os.path.splitext(os.path.basename(file))[0] for file in files]
-    return statcheck(texts, names = names)
+    return statcheck(texts, names = names, *kwargs)
 
 
-def checkPDFdir(dir=None, subdir=True, *args, **kwargs):
-    if dir is None:
-        root = ttk()
-        root.withdraw()
-        files = filedialog.askopenfilenames()
-
+def checkPDFdir(dir, subdir=True, **kwargs):
+    """
+    Check all PDF files in a directory for statistical errors.
+    :param dir: Directory to check
+    :param subdir: Check subdirectories
+    :param kwargs: Keyword arguments for statcheck
+    :return: Results of statcheck
+    """
     files = []
     if subdir:
         for path, _, filenames in os.walk(dir):
@@ -122,4 +132,4 @@ def checkPDFdir(dir=None, subdir=True, *args, **kwargs):
     texts = getPDF(files)
 
     names = [os.path.splitext(os.path.basename(file))[0] for file in files]
-    return statcheck(texts, names = names)
+    return statcheck(texts, names = names, *kwargs)
