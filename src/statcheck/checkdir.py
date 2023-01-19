@@ -1,5 +1,6 @@
 from statcheck.file_to_txt import getPDF, getHTML
 from statcheck.st import statcheck
+import pandas as pd
 
 import re
 import os
@@ -18,7 +19,7 @@ def checkdir(dir, subdir = True, *kwargs):
     if pdfs:
         pdfres, pdfPres = checkPDFdir(dir, subdir, *kwargs)
     if htmls:
-        htmlres, pdfPres = checkHTMLdir(dir, subdir, *kwargs)
+        htmlres, htmlPres = checkHTMLdir(dir, subdir, *kwargs)
 
     if pdfs and htmls:
         if pdfres is not None and htmlres is not None:
