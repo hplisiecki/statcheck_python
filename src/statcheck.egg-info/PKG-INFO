@@ -1,11 +1,11 @@
 Metadata-Version: 2.1
 Name: statcheck
-Version: 0.0.1
+Version: 0.0.3
 Summary: Python implementation of the R package 'statcheck' used for extracting and analysing statistical tests in scientific articles.
 Author-email: Hubert Plisiecki <hplisiecki@gmail.com>
 Project-URL: Homepage, https://github.com/hplisiecki/statcheck_python
 Classifier: Programming Language :: Python :: 3
-Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.9
 Description-Content-Type: text/markdown
@@ -15,16 +15,15 @@ License-File: LICENSE.txt
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- after editing README.Rmd, run devtools::build_readme() -->
 
-# statcheck <a href='http://statcheck.io'><img src='man/figures/logo.jpg' align="right" height="100" /></a>
+# statcheck
 
 <!-- badges: start -->
-
-
+[![PyPI version](https://badge.fury.io/py/statcheck.svg)](https://badge.fury.io/py/statcheck)
 <!-- badges: end -->
 
 ## Credits
-This is a python implementation of the R package `statcheck` published by Michèle B. Nuijten [MicheleNuijten]. The original package can by found at her Github 
-page. The code relies heavily on Nuijten's work and is currently a python implementation of the [original package](https://github.com/MicheleNuijten/statcheck), with the goal of making it more accessible to the 
+This is a python implementation of the R package `statcheck` (ver. 1.4.0-beta.4) published by Michèle B. Nuijten [MicheleNuijten]. The original package can by found at her Github 
+page. The code relies heavily on Nuijten's work and is currently only a python implementation of the [original package](https://github.com/MicheleNuijten/statcheck), with the goal of making it more accessible to the 
 python community. The original package was published under the GNU General Public License v3.0. The curent implementation is published under the MIT 
 License. To ensure usability, all the original tests were recoded to the python version.
 
@@ -89,7 +88,7 @@ pip install statcheck
 ```
 ### Example Usage
 ```python
-from statcheck import checkPDFdir
+from statcheck.checkdir import checkPDFdir
 dir = 'path/to/pdf/directory'
 Res, pRes = checkPDFdir(dir, subdir = False)
 

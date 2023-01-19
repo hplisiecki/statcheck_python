@@ -5,4 +5,5 @@
 # ignore directory .pytest_cache
 /pytest_cache
 /dist
+/src/statcheck.egg-info
 pyproject.toml

@@ -9,7 +9,7 @@
 <!-- badges: end -->
 
 ## Credits
-This is a python implementation of the R package `statcheck` published by Michèle B. Nuijten [MicheleNuijten]. The original package can by found at her Github 
+This is a python implementation of the R package `statcheck` (ver. 1.4.0-beta.4) published by Michèle B. Nuijten [MicheleNuijten]. The original package can by found at her Github 
 page. The code relies heavily on Nuijten's work and is currently only a python implementation of the [original package](https://github.com/MicheleNuijten/statcheck), with the goal of making it more accessible to the 
 python community. The original package was published under the GNU General Public License v3.0. The curent implementation is published under the MIT 
 License. To ensure usability, all the original tests were recoded to the python version.
@@ -75,7 +75,7 @@ pip install statcheck
 ```
 ### Example Usage
 ```python
-from statcheck import checkPDFdir
+from statcheck.checkdir import checkPDFdir
 dir = 'path/to/pdf/directory'
 Res, pRes = checkPDFdir(dir, subdir = False)
 

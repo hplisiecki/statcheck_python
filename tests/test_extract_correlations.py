@@ -46,10 +46,3 @@ def testCorr4():
     Res, pRes = statcheck([txt1, txt2])
 
     assert len(Res) == 0, "Length of Res is not 0"
-
-
-
-
-
-
-

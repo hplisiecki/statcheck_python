@@ -191,6 +191,6 @@ def test10():
     Res, pRes = statcheck([txt1, txt2, txt3, txt4, txt5, txt9])
     assert list(Res["Error"].values) == [False, False, False, False, False, True], "test10 failed"
 
-    # Res, pRes = statcheck([txt6, txt7, txt8, txt9]) # commented out in the original
-    # assert list(Res["Error"].values) == [True, True, True], "test10 commented out in the original failed"
+    Res, pRes = statcheck([txt6, txt7, txt8]) # commented out in the original
+    assert list(Res["Error"].values) == [True, True, True], "test10 commented out in the original failed"
 

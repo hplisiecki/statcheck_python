@@ -1043,8 +1043,3 @@ def test_129_9():
     txt9 = ''.join(["t(28) > ", str(t06 + 0.001), ", p > .0600"]) # approach computed p == .06
     Res, pRes = statcheck(txt9, pEqualAlphaSig = False)
     assert all(Res['Decision_Error'].values == False), "Test 129_9 failed"
-
-
-
-
-
