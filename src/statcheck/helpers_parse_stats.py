@@ -255,7 +255,11 @@ def extract_p_value(raw):
             if dec < 0:
                 dec = 0
 
-            p_value[i] = float(p_value[i])
+            try:
+                p_value[i] = float(p_value[i])
+            except:
+                # leave only nonalpha characters
+                p_value[i] = ''.join(filter(lambda x: not x.isalpha(), p_value[i]))
 
             p_dec.append(dec)
 
