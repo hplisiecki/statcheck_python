@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "statcheck"
-version = "0.0.6"  # bump for this release
+version = "0.0.7"  # bump for this release
 description = "Python implementation of the R package 'statcheck' used for extracting and analysing statistical tests in scientific articles."
 readme = "README.md"
 license = { file = "LICENSE.txt" }

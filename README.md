@@ -11,8 +11,7 @@
 ## Credits
 This is a python implementation of the R package `statcheck` (ver. 1.4.0-beta.4) published by Michèle B. Nuijten [MicheleNuijten]. The original package can by found at her Github 
 page. The code relies heavily on Nuijten's work and is currently only a python implementation of the [original package](https://github.com/MicheleNuijten/statcheck), with the goal of making it more accessible to the 
-python community. Both packages are published under the GNU General Public License v3.0. The curent implementation is published under the MIT 
-License. To ensure usability, all the original tests were recoded to the python version.
+python community. Both packages are published under the GNU General Public License v3.0. To ensure usability, all the original tests were recoded to the python version.
 
 ## What is statcheck?
 
