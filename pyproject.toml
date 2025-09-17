@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=69", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "statcheck"
+version = "0.0.6"  # bump for this release
+description = "Python implementation of the R package 'statcheck' used for extracting and analysing statistical tests in scientific articles."
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+requires-python = ">=3.9"
+authors = [{ name="Hubert Plisiecki", email="hplisiecki@gmail.com" }]
+
+# Keep runtime deps minimal but modern enough for Py 3.12/3.13 wheels
+dependencies = [
+  "numpy>=1.26",            # 3.12+ wheels
+  "pandas>=1.5",            # 1.5+ works; 2.x OK too
+  "scipy>=1.11",            # 3.12 support
+  "tqdm>=4.65",
+  "beautifulsoup4>=4.11",
+  "PyPDF2>=2.12",           # 2.12+ has PdfReader/extract_text; 3.x also OK
+  "matplotlib>=3.8",        # 3.8+ supports 3.12
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.urls]
+Homepage = "https://github.com/hplisiecki/statcheck_python"
+Source = "https://github.com/hplisiecki/statcheck_python"
+Issues = "https://github.com/hplisiecki/statcheck_python/issues"
+
+# ---- src layout ----
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["statcheck*"]
+exclude = ["tests*"]
+
+# ---- dev-only extras (kept out of runtime) ----
+[project.optional-dependencies]
+dev = [
+  "pytest>=7",
+  "pytest-cov>=4",
+  "ruff>=0.5",
+  "pyupgrade>=3.15",
+]
+
+# ---- pytest config (so tests can import from src) ----
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["src"]

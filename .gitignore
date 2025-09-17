@@ -6,4 +6,4 @@
 /pytest_cache
 /dist
 /src/statcheck.egg-info
-pyproject.toml
+/sanity_pdf

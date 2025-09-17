@@ -89,10 +89,10 @@ def getPDF(files):
     for file in tqdm(files):
         try:
             pdfFileObj = open(file, 'rb')
-            pdfReader = PyPDF2.PdfFileReader(pdfFileObj, strict = False)
+            pdfReader = PyPDF2.PdfReader(pdfFileObj, strict=False)
             text = ""
-            for page in range(pdfReader.numPages):
-                text += pdfReader.getPage(page).extractText()
+            for page in range(len(pdfReader.pages)):
+                text += pdfReader.pages[page].extract_text()
 
             # this code gets rid of XML artifacts
             raw_text = text.encode('unicode_escape').decode('utf-8')

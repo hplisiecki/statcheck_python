@@ -1,11 +1,9 @@
 import sys
 import os
-src_dir = os.path.abspath(os.path.join(__file__, "../../src/statcheck"))
-sys.path.insert(0, src_dir)
 import scipy.stats as stats
 import numpy as np
-from compute_p import r2t
-from st import statcheck
+from statcheck.compute_p import r2t
+from statcheck.st import statcheck
 
 # python tests for the p-value correction
 

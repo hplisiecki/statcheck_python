@@ -1,9 +1,7 @@
 import sys
 import os
 from scipy.stats import t
-src_dir = os.path.abspath(os.path.join(__file__, "../../src/statcheck"))
-sys.path.insert(0, src_dir)
-from st import statcheck
+from statcheck.st import statcheck
 
 
 # python tests for error

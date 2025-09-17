@@ -1,8 +1,6 @@
 import os
 import sys
-src_dir = os.path.abspath(os.path.join(__file__, "../../src/statcheck"))
-sys.path.insert(0, src_dir)
-from st import statcheck
+from statcheck.st import statcheck
 
 # test if the following p-values are correctly retrieved ----------------------
 
